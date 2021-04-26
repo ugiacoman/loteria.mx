@@ -12,7 +12,7 @@ export function Card(props) {
         alt="Gallo"
         width={width}
         height={height}
-        layout="fixed"
+        layout="intrinsic"
       />
   )
 }
@@ -37,10 +37,14 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.gridContainer}>
-      {tabla.map((item, index) => (
-        <Card key={index} name={item} />
-      ))}
+    <div className={styles.body}>
+      <h1> Tabla </h1>
+      <div className={styles.gridContainer}>
+        {tabla.map((item, index) => (
+          <Card key={index} name={item} />
+        ))}
+      </div>
     </div>
+    
   )
 }
