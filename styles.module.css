@@ -1,10 +1,8 @@
-.hello {
-  font: 15px Helvetica, Arial, sans-serif;
-  background: #eee;
-  padding: 100px;
-  text-align: center;
-  transition: 100ms ease-in background;
-}
-.hello:hover {
-  background: #ccc;
+.gridContainer {
+  display: grid;
+  /* width: 50vw;
+  height: 50vh; */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  justify-items: center;
 }
