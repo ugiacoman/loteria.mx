@@ -38,9 +38,9 @@ export default function Home() {
 
   return (
     <div className={styles.gridContainer}>
-    {tabla.map((item, index) => (
-      <Card key={index} name={item} />
-    ))}
+      {tabla.map((item, index) => (
+        <Card key={index} name={item} />
+      ))}
     </div>
   )
 }
