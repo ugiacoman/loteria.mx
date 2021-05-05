@@ -55,34 +55,38 @@ export class Card extends Component {
   }
 }
 
-export default function Home() {
-  var count = 1
-  var fullDeck = []
-  
-  // Create deck of cards
-  while (fullDeck.length < 54) {
-    fullDeck.push(count)
-    count += 1
-  }
-
-  // Create tabla of 16 cards
-  var tabla = []
-  while (tabla.length < 16) {
-    const index = Math.floor(Math.random()*fullDeck.length)
-    const randomCard = fullDeck[index]
-    tabla.push(randomCard)
-    fullDeck.splice(index, 1)
-  }
-
-  return (
-    <div className={styles.body}>
-      <h1> Tabla </h1>
-      <div className={styles.gridContainer}>
-        {tabla.map((item, index) => (
-          <Card key={index} name={item} />
-        ))}
-      </div>
-    </div>
+export default class Page extends React.Component {
+  static async getInitialProps(ctx) {
+    var count = 1
+    var fullDeck = []
     
-  )
+    // Create deck of cards
+    while (fullDeck.length < 54) {
+      fullDeck.push(count)
+      count += 1
+    }
+  
+    // Create tabla of 16 cards
+    var tabla = []
+    while (tabla.length < 16) {
+      const index = Math.floor(Math.random()*fullDeck.length)
+      const randomCard = fullDeck[index]
+      tabla.push(randomCard)
+      fullDeck.splice(index, 1)
+    }
+    return { tabla };
+  }
+
+  render() {
+    return (
+      <div className={styles.body}>
+        <h1> Tabla </h1>
+        <div className={styles.gridContainer}>
+          {this.props.tabla.map((item, index) => (
+            <Card key={index} name={item} />
+          ))}
+        </div>
+      </div>
+    )
+  }
 }
