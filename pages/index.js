@@ -59,10 +59,16 @@ export default class Page extends React.Component {
   static async getInitialProps(ctx) {
     var count = 1
     var fullDeck = []
+
+
+    // Inappropriate indices
+    const bad = [2, 3, 4, 6, 25, 26, 32, 38]
     
     // Create deck of cards
-    while (fullDeck.length < 54) {
-      fullDeck.push(count)
+    while (fullDeck.length < 54 - bad.length) {
+      if (!bad.includes(count))  {
+        fullDeck.push(count)
+      }
       count += 1
     }
   
