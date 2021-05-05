@@ -18,7 +18,7 @@ export class Card extends Component {
   render() {
     const width = 150
     const height = 210  
-    const name = `/${this.props.name}.jpg`
+    const name = `/small/${this.props.name}.jpg`
 
     const className = this.state.isActive ? styles.activeBean : styles.inactiveBean
 
@@ -41,6 +41,7 @@ export class Card extends Component {
           width={width}
           height={height}
           layout="intrinsic"
+          priority={true}
         />
         <img
           className={className}
