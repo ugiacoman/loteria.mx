@@ -1,20 +1,57 @@
 import styles from '../styles.module.css'
 import Image from 'next/image'
+import { Component } from 'react'
+
+export class Card extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      isActive: false
+    }
+  }
+
+  togglePinto = () => {
+    this.setState({ isActive: !this.state.isActive })
+  }  
+
+  render() {
+    const width = 150
+    const height = 210  
+    const name = `/${this.props.name}.jpg`
+
+    const className = this.state.isActive ? styles.activeBean : styles.inactiveBean
+
+    const arc = Math.floor(Math.random() * 360)
+
+    const rotation = {
+      transform: `rotate(${arc}deg)`
+    }
 
 
-export function Card(props) {
-  const width = 150
-  const height = 210  
-  const name = `/${props.name}.jpg`
-  return (
-    <Image
-        src={name}
-        alt="Gallo"
-        width={width}
-        height={height}
-        layout="intrinsic"
-      />
-  )
+    return (
+      <div 
+        className={styles.card}
+        onClick={this.togglePinto}
+      >
+        <Image
+          className={styles.artwork}
+          src={name}
+          alt="Gallo"
+          width={width}
+          height={height}
+          layout="intrinsic"
+        />
+        <img
+          className={className}
+          style={this.state.isActive ? rotation: null}
+          src="/pinto_bean.png"
+          width={80}
+          height={80}
+        />
+      </div>
+    )
+  }
 }
 
 export default function Home() {
